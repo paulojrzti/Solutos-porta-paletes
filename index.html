@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solutos Porta Paletes — Diagnóstico Gratuito</title>
+  <meta name="description" content="Multiplique a capacidade do seu galpão com segurança. Porta paletes novos e usados revisados. Montagem especializada. Atendimento nacional." />
+  <link rel="icon" type="image/png" href="favico.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            amarelo: '#FFCC00',
+            cinza: '#666666',
+            cinzaclaro: '#B3B3B3',
+            dark: '#2a2a2a',
+            darker: '#1e1e1e',
+          },
+          fontFamily: {
+            heading: ['"Barlow Condensed"', 'sans-serif'],
+            body: ['Barlow', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Barlow', sans-serif; }
+    h1, h2, h3, h4, .heading { font-family: 'Barlow Condensed', sans-serif; }
+
+    /* Padrão chevron isométrico da marca */
+    .chevron-bg {
+      background-color: #2a2a2a;
+      background-image:
+        repeating-linear-gradient(
+          120deg,
+          transparent,
+          transparent 28px,
+          rgba(255,204,0,0.06) 28px,
+          rgba(255,204,0,0.06) 30px
+        ),
+        repeating-linear-gradient(
+          60deg,
+          transparent,
+          transparent 28px,
+          rgba(255,204,0,0.06) 28px,
+          rgba(255,204,0,0.06) 30px
+        );
+    }
+
+    .chevron-bg-yellow {
+      background-color: #FFCC00;
+      background-image:
+        repeating-linear-gradient(
+          120deg,
+          transparent,
+          transparent 28px,
+          rgba(0,0,0,0.05) 28px,
+          rgba(0,0,0,0.05) 30px
+        ),
+        repeating-linear-gradient(
+          60deg,
+          transparent,
+          transparent 28px,
+          rgba(0,0,0,0.05) 28px,
+          rgba(0,0,0,0.05) 30px
+        );
+    }
+
+    .btn-wpp {
+      background: #FFCC00;
+      color: #1e1e1e;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-wpp:hover { background: #e6b800; transform: translateY(-1px); }
+
+    .btn-wpp-outline {
+      border: 2px solid #FFCC00;
+      color: #FFCC00;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-wpp-outline:hover { background: rgba(255,204,0,0.1); }
+
+    .card-servico {
+      border: 1px solid rgba(255,204,0,0.25);
+      background: rgba(255,255,255,0.04);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .card-servico:hover {
+      border-color: #FFCC00;
+      background: rgba(255,204,0,0.06);
+    }
+
+    .faq-answer { display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-icon { transition: transform 0.2s; }
+
+    /* Navbar scroll shadow */
+    #navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+  </style>
+</head>
+<body class="bg-dark text-white">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-darker transition-shadow duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="#hero">
+        <img src="logo.png" alt="Solutos Porta Paletes" class="h-7 w-auto" />
+      </a>
+      <!-- CTA Nav -->
+      <a href="https://wa.me/5527992228275?text=Olá!%20Quero%20um%20diagnóstico%20gratuito%20para%20porta%20paletes." target="_blank" class="btn-wpp px-4 py-2 rounded-sm text-sm hidden sm:inline-flex">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quero um Diagnóstico Gratuito
+      </a>
+      <!-- Mobile CTA -->
+      <a href="https://wa.me/5527992228275?text=Olá!%20Quero%20um%20diagnóstico%20gratuito%20para%20porta%20paletes." target="_blank" class="btn-wpp px-3 py-2 rounded-sm text-xs sm:hidden">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="min-h-screen flex items-center pt-16" style="background-color:#606060;background-image:linear-gradient(to right,#606060 0%,#606060 35%,rgba(96,96,96,0.82) 55%,rgba(96,96,96,0.18) 100%),repeating-linear-gradient(120deg,transparent,transparent 28px,rgba(255,204,0,0.07) 28px,rgba(255,204,0,0.07) 30px),repeating-linear-gradient(60deg,transparent,transparent 28px,rgba(255,204,0,0.07) 28px,rgba(255,204,0,0.07) 30px),url('hero.png');background-size:cover;background-position:center right;background-repeat:no-repeat;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-28 w-full">
+      <div class="max-w-3xl">
+        <p class="text-amarelo heading font-bold text-lg uppercase tracking-widest mb-4">Porta Paletes Novos &amp; Usados · Montagem Especializada</p>
+        <h1 class="heading font-black text-white leading-none mb-6" style="font-size:clamp(2.8rem,7vw,5.5rem);line-height:0.95;">
+          SEU GALPÃO ESTÁ<br/>
+          <span class="text-amarelo">TRAVANDO O CRESCIMENTO</span><br/>
+          DA SUA EMPRESA?
+        </h1>
+        <p class="text-white text-lg md:text-xl leading-relaxed mb-8 max-w-2xl">
+          Multiplique sua capacidade de armazenagem com segurança e o melhor custo-benefício. Estruturas novas de alto nível e usadas revisadas. Montagem especializada. Atendimento em todo o Brasil.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 mb-12">
+          <a href="https://wa.me/5527992228275?text=Olá!%20Quero%20um%20diagnóstico%20gratuito%20para%20porta%20paletes." target="_blank" class="btn-wpp px-8 py-4 rounded-sm text-lg justify-center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Quero um Diagnóstico Gratuito
+          </a>
+        </div>
+        <!-- Social proof micro -->
+        <div class="flex flex-col sm:flex-row gap-6 sm:gap-10">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-amarelo flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold text-sm">Centenas de empresas</div>
+              <div class="text-cinzaclaro text-xs">com estoque otimizado</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-amarelo flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold text-sm">Resposta em minutos</div>
+              <div class="text-cinzaclaro text-xs">via WhatsApp</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-amarelo flex items-center justify-center flex-shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold text-sm">Atendimento nacional</div>
+              <div class="text-cinzaclaro text-xs">polo em Santa Catarina</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST BAR ===== -->
+  <section class="bg-amarelo py-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="flex items-center gap-2 justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          <span class="heading font-bold text-dark text-sm uppercase tracking-wide">Estruturas Novas</span>
+        </div>
+        <div class="flex items-center gap-2 justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          <span class="heading font-bold text-dark text-sm uppercase tracking-wide">Usadas Revisadas</span>
+        </div>
+        <div class="flex items-center gap-2 justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <span class="heading font-bold text-dark text-sm uppercase tracking-wide">Montagem Especializada</span>
+        </div>
+        <div class="flex items-center gap-2 justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span class="heading font-bold text-dark text-sm uppercase tracking-wide">Atendimento Nacional</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOR ===== -->
+  <section class="bg-white py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-14">
+        <p class="text-cinza heading font-bold text-base uppercase tracking-widest mb-2">Você reconhece isso?</p>
+        <h2 class="heading font-black text-dark leading-none" style="font-size:clamp(2rem,5vw,3.5rem);">
+          A OPERAÇÃO ESTÁ <span style="color:#666666;">CRESCENDO</span>,<br/>
+          MAS O GALPÃO <span class="text-amarelo" style="color:#FFCC00;">NÃO ACOMPANHA</span>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Dor 1 -->
+        <div class="border-l-4 border-amarelo bg-gray-50 p-6 rounded-sm">
+          <div class="text-amarelo mb-3">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3 class="heading font-black text-dark text-xl mb-2">Estoque no limite — e crescendo</h3>
+          <p class="text-cinza text-sm leading-relaxed">Mercadorias empilhadas no chão, corredores bloqueados, picking lento. Cada dia sem estrutura adequada é dinheiro jogado fora em ineficiência operacional.</p>
+        </div>
+        <!-- Dor 2 -->
+        <div class="border-l-4 border-amarelo bg-gray-50 p-6 rounded-sm">
+          <div class="text-amarelo mb-3">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="heading font-black text-dark text-xl mb-2">Medo de estrutura insegura</h3>
+          <p class="text-cinza text-sm leading-relaxed">Porta paletes sobrecarregado, mal instalado ou sem especificação técnica é risco real de acidente grave. Uma estrutura que desaba pode custar muito mais do que o investimento correto.</p>
+        </div>
+        <!-- Dor 3 -->
+        <div class="border-l-4 border-amarelo bg-gray-50 p-6 rounded-sm">
+          <div class="text-amarelo mb-3">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h3 class="heading font-black text-dark text-xl mb-2">Fornecedor que vende e some</h3>
+          <p class="text-cinza text-sm leading-relaxed">Receber a estrutura é só metade do trabalho. Quem faz a montagem? Quem garante que as cargas estão dentro do limite? A maioria dos fornecedores não responde por isso.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVIÇOS ===== -->
+  <section class="bg-darker py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-14">
+        <p class="text-amarelo heading font-bold text-base uppercase tracking-widest mb-2">O que a Solutos oferece</p>
+        <h2 class="heading font-black text-white leading-none" style="font-size:clamp(2rem,5vw,3.5rem);">
+          SOLUÇÃO COMPLETA DE<br/><span class="text-amarelo">ARMAZENAGEM INDUSTRIAL</span>
+        </h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Serviço 1 -->
+        <div class="card-servico rounded-sm p-6">
+          <div class="w-12 h-12 rounded-sm bg-amarelo flex items-center justify-center mb-4">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          </div>
+          <h3 class="heading font-black text-white text-xl mb-2">Porta Paletes Novos</h3>
+          <p class="text-cinzaclaro text-sm leading-relaxed">Estruturas de alto padrão direto da indústria. Especificação técnica para o peso e volume real da sua operação. Entrega nacional via polo em SC.</p>
+        </div>
+        <!-- Serviço 2 -->
+        <div class="card-servico rounded-sm p-6">
+          <div class="w-12 h-12 rounded-sm bg-amarelo flex items-center justify-center mb-4">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          </div>
+          <h3 class="heading font-black text-white text-xl mb-2">Usados Revisados</h3>
+          <p class="text-cinzaclaro text-sm leading-relaxed">Estoque massivo de usados inspecionados e revisados. Menor investimento inicial com a mesma segurança e eficiência. Ideal para quem precisa de agilidade.</p>
+        </div>
+        <!-- Serviço 3 -->
+        <div class="card-servico rounded-sm p-6">
+          <div class="w-12 h-12 rounded-sm bg-amarelo flex items-center justify-center mb-4">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3 class="heading font-black text-white text-xl mb-2">Montagem e Desmontagem</h3>
+          <p class="text-cinzaclaro text-sm leading-relaxed">Equipe técnica especializada executa tudo. Sem terceirizar, sem improvisação. A Solutos assume a responsabilidade integral da instalação e segurança da estrutura.</p>
+        </div>
+        <!-- Serviço 4 -->
+        <div class="card-servico rounded-sm p-6">
+          <div class="w-12 h-12 rounded-sm bg-amarelo flex items-center justify-center mb-4">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          </div>
+          <h3 class="heading font-black text-white text-xl mb-2">Manutenção e Compra</h3>
+          <p class="text-cinzaclaro text-sm leading-relaxed">Manutenção preventiva e corretiva para prolongar a vida útil da estrutura. Também compramos sua estrutura usada — transformamos o antigo em desconto no novo.</p>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="https://wa.me/5527992228275?text=Olá!%20Quero%20um%20diagnóstico%20gratuito%20para%20porta%20paletes." target="_blank" class="btn-wpp-outline px-8 py-4 rounded-sm text-base">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero um Diagnóstico Gratuito
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DIFERENCIAIS ===== -->
+  <section class="bg-dark py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-12 md:items-stretch">
+        <!-- Texto -->
+        <div>
+          <p class="text-amarelo heading font-bold text-base uppercase tracking-widest mb-3">Por que a Solutos</p>
+          <h2 class="heading font-black text-white leading-none mb-8" style="font-size:clamp(2rem,4.5vw,3.2rem);">
+            NÃO SOMOS APENAS<br/>UMA REVENDA.<br/><span class="text-amarelo">SOMOS SUA PARCEIRA</span><br/>ESTRATÉGICA.
+          </h2>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-12 h-12 rounded-sm bg-amarelo flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="heading font-black text-dark text-xl">1</span>
+              </div>
+              <div>
+                <h3 class="heading font-black text-white text-lg mb-1">Solução de ponta a ponta</h3>
+                <p class="text-cinzaclaro text-sm leading-relaxed">Compramos sua estrutura antiga, fornecemos a nova e fazemos toda a instalação. Você não precisa se preocupar com nada — a Solutos assume do início ao fim.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-12 h-12 rounded-sm bg-amarelo flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="heading font-black text-dark text-xl">2</span>
+              </div>
+              <div>
+                <h3 class="heading font-black text-white text-lg mb-1">Estoque massivo — novo e usado</h3>
+                <p class="text-cinzaclaro text-sm leading-relaxed">Atendemos quem busca baixo custo (usados revisados) e alto padrão (novos direto da indústria via polo em SC). Atendimento nacional para quem precisa de mais espaço agora.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-12 h-12 rounded-sm bg-amarelo flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="heading font-black text-dark text-xl">3</span>
+              </div>
+              <div>
+                <h3 class="heading font-black text-white text-lg mb-1">Zero risco de acidente</h3>
+                <p class="text-cinzaclaro text-sm leading-relaxed">Nossa equipe técnica especializada assume a responsabilidade integral pela montagem. Estrutura corretamente instalada para o peso e demanda real da sua operação.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Visual -->
+        <div class="relative md:flex md:flex-col">
+          <div class="rounded-sm overflow-hidden h-64 md:flex-1">
+            <img src="pqsolutos.jpg" alt="Galpão Solutos Porta Paletes" class="w-full h-full object-cover block" />
+          </div>
+          <!-- Badge flutuante -->
+          <div class="absolute -bottom-4 -left-4 bg-amarelo text-dark rounded-sm px-4 py-3 shadow-xl">
+            <div class="heading font-black text-2xl leading-none">100%</div>
+            <div class="text-xs font-bold uppercase tracking-wide">Responsabilidade técnica</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMO FUNCIONA ===== -->
+  <section class="chevron-bg-yellow py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-dark heading font-bold text-base uppercase tracking-widest mb-3 opacity-60">Simples assim</p>
+      <h2 class="heading font-black text-dark leading-none mb-14" style="font-size:clamp(2rem,5vw,3.5rem);">
+        3 PASSOS PARA<br/>TRANSFORMAR SEU GALPÃO
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Passo 1 -->
+        <div class="relative">
+          <div class="w-16 h-16 rounded-full bg-dark flex items-center justify-center mx-auto mb-4">
+            <span class="heading font-black text-amarelo text-3xl">1</span>
+          </div>
+          <h3 class="heading font-black text-dark text-xl mb-2">Fale com um especialista</h3>
+          <p class="text-dark text-sm leading-relaxed opacity-80">Clique no botão e fale conosco agora via WhatsApp. Resposta imediata de um especialista em armazenagem industrial.</p>
+          <!-- Seta -->
+          <div class="hidden md:block absolute top-8 -right-4 text-dark opacity-30">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+        <!-- Passo 2 -->
+        <div class="relative">
+          <div class="w-16 h-16 rounded-full bg-dark flex items-center justify-center mx-auto mb-4">
+            <span class="heading font-black text-amarelo text-3xl">2</span>
+          </div>
+          <h3 class="heading font-black text-dark text-xl mb-2">Diagnóstico e orçamento</h3>
+          <p class="text-dark text-sm leading-relaxed opacity-80">Receba um diagnóstico técnico personalizado gratuito. Você entende qual estrutura suporta sua carga, o custo exato e o prazo de entrega.</p>
+          <div class="hidden md:block absolute top-8 -right-4 text-dark opacity-30">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+        <!-- Passo 3 -->
+        <div>
+          <div class="w-16 h-16 rounded-full bg-dark flex items-center justify-center mx-auto mb-4">
+            <span class="heading font-black text-amarelo text-3xl">3</span>
+          </div>
+          <h3 class="heading font-black text-dark text-xl mb-2">Entregamos e montamos</h3>
+          <p class="text-dark text-sm leading-relaxed opacity-80">Nossa equipe técnica entrega, monta e garante a segurança da estrutura. Sua operação escala. Você foca no que importa.</p>
+        </div>
+      </div>
+      <div class="mt-12">
+        <a href="https://wa.me/5527992228275?text=Olá!%20Quero%20um%20diagnóstico%20gratuito%20para%20porta%20paletes." target="_blank" class="inline-flex items-center gap-3 bg-dark text-amarelo px-8 py-4 rounded-sm heading font-black text-lg uppercase tracking-wide hover:bg-darker transition-colors">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero um Diagnóstico Gratuito
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="bg-darker py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-amarelo heading font-bold text-base uppercase tracking-widest mb-2">Dúvidas frequentes</p>
+        <h2 class="heading font-black text-white leading-none" style="font-size:clamp(1.8rem,4vw,3rem);">
+          ANTES DE TOMAR UMA<br/>DECISÃO, LEIA ISSO
+        </h2>
+      </div>
+      <div class="space-y-2" id="faq">
+        <!-- FAQ 1 -->
+        <div class="faq-item border border-gray-700 rounded-sm overflow-hidden">
+          <button class="faq-btn w-full flex items-center justify-between p-5 text-left hover:bg-dark transition-colors" onclick="toggleFaq(this)">
+            <span class="heading font-bold text-white text-base pr-4">Não tenho certeza se porta paletes resolve o meu caso. E agora?</span>
+            <svg class="faq-icon w-5 h-5 text-amarelo flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p class="text-cinzaclaro text-sm leading-relaxed">É exatamente para isso que existe o nosso diagnóstico gratuito. Você não precisa saber a solução — só precisa descrever o problema. Nossa equipe técnica analisa o seu galpão, a sua carga e a sua operação, e apresenta a melhor alternativa. Sem compromisso.</p>
+          </div>
+        </div>
+        <!-- FAQ 2 -->
+        <div class="faq-item border border-gray-700 rounded-sm overflow-hidden">
+          <button class="faq-btn w-full flex items-center justify-between p-5 text-left hover:bg-dark transition-colors" onclick="toggleFaq(this)">
+            <span class="heading font-bold text-white text-base pr-4">Parece caro. O investimento se justifica?</span>
+            <svg class="faq-icon w-5 h-5 text-amarelo flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p class="text-cinzaclaro text-sm leading-relaxed">Pense assim: cada dia com o estoque no limite é ineficiência operacional com custo real — picking mais lento, mais erros, crescimento travado. Além disso, temos estruturas usadas revisadas com ótimo custo-benefício para quem precisa de solução com menor investimento inicial. E para novos, trabalhamos direto com a indústria — sem intermediário no preço.</p>
+          </div>
+        </div>
+        <!-- FAQ 3 -->
+        <div class="faq-item border border-gray-700 rounded-sm overflow-hidden">
+          <button class="faq-btn w-full flex items-center justify-between p-5 text-left hover:bg-dark transition-colors" onclick="toggleFaq(this)">
+            <span class="heading font-bold text-white text-base pr-4">Como posso confiar na Solutos se não te conheço?</span>
+            <svg class="faq-icon w-5 h-5 text-amarelo flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p class="text-cinzaclaro text-sm leading-relaxed">Entendemos essa preocupação. Por isso, o diagnóstico é gratuito e sem compromisso — você avalia nossa proposta antes de decidir qualquer coisa. Temos polo em Santa Catarina com atendimento nacional, responsabilidade técnica integral pela montagem, e centenas de empresas atendidas. Começamos pequeno, você verifica, e aí decide.</p>
+          </div>
+        </div>
+        <!-- FAQ 4 -->
+        <div class="faq-item border border-gray-700 rounded-sm overflow-hidden">
+          <button class="faq-btn w-full flex items-center justify-between p-5 text-left hover:bg-dark transition-colors" onclick="toggleFaq(this)">
+            <span class="heading font-bold text-white text-base pr-4">E a montagem — quem garante que é feita corretamente?</span>
+            <svg class="faq-icon w-5 h-5 text-amarelo flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p class="text-cinzaclaro text-sm leading-relaxed">A Solutos. Nossa equipe técnica especializada executa a montagem — não terceirizamos esse serviço. Assumimos a responsabilidade integral pela instalação, pela especificação de carga e pela segurança da estrutura. Esse é justamente o nosso diferencial: você compra e dorme tranquilo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section class="chevron-bg py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-amarelo heading font-bold text-base uppercase tracking-widest mb-4">Não deixe para amanhã</p>
+      <h2 class="heading font-black text-white leading-none mb-6" style="font-size:clamp(2.2rem,6vw,4.5rem);">
+        SEU CONCORRENTE JÁ ESTÁ<br/><span class="text-amarelo">ESCALANDO O ESTOQUE.</span><br/>E VOCÊ?
+      </h2>
+      <p class="text-cinzaclaro text-lg mb-10 max-w-2xl mx-auto">
+        Diagnóstico técnico gratuito. Sem compromisso. Resposta em minutos. Fale agora com um especialista e descubra quanto espaço você está perdendo.
+      </p>
+      <a href="https://wa.me/5527992228275?text=Olá!%20Quero%20um%20diagnóstico%20gratuito%20para%20porta%20paletes." target="_blank" class="btn-wpp px-10 py-5 rounded-sm text-xl inline-flex">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Quero um Diagnóstico Gratuito
+      </a>
+      <p class="text-cinza text-sm mt-4">Sem custo · Sem compromisso · Resposta imediata</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-darker border-t border-gray-800 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <img src="logo.png" alt="Solutos Porta Paletes" class="h-8 w-auto" />
+      </div>
+      <p class="text-cinza text-xs text-center">Soluções completas em armazenagem industrial · Atendimento nacional</p>
+      <a href="https://wa.me/5527992228275" target="_blank" class="text-amarelo text-sm font-semibold hover:text-white transition-colors flex items-center gap-2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </footer>
+
+  <!-- ===== JS ===== -->
+  <script>
+    // Navbar shadow on scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      // Open clicked if it was closed
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</body>
+</html>
