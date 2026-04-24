@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solutos Porta Paletes — Orçamento + Layout Gratuito</title>
+  <meta name="description" content="Triplique a capacidade do seu estoque sem mudar de galpão. Porta paletes novos e usados revisados, pronta entrega em todo o Brasil. Até 40% de economia." />
+  <link rel="icon" type="image/png" href="favico.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            amarelo: '#FFCC00',
+            cinza: '#666666',
+            cinzaclaro: '#B3B3B3',
+            dark: '#2a2a2a',
+            darker: '#1e1e1e',
+          },
+          fontFamily: {
+            heading: ['"Barlow Condensed"', 'sans-serif'],
+            body: ['Barlow', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Barlow', sans-serif; }
+    h1, h2, h3, h4, .heading { font-family: 'Barlow Condensed', sans-serif; }
+
+    .chevron-bg {
+      background-color: #2a2a2a;
+      background-image:
+        repeating-linear-gradient(
+          120deg,
+          transparent,
+          transparent 28px,
+          rgba(255,204,0,0.06) 28px,
+          rgba(255,204,0,0.06) 30px
+        ),
+        repeating-linear-gradient(
+          60deg,
+          transparent,
+          transparent 28px,
+          rgba(255,204,0,0.06) 28px,
+          rgba(255,204,0,0.06) 30px
+        );
+    }
+
+    .chevron-bg-yellow {
+      background-color: #FFCC00;
+      background-image:
+        repeating-linear-gradient(
+          120deg,
+          transparent,
+          transparent 28px,
+          rgba(0,0,0,0.05) 28px,
+          rgba(0,0,0,0.05) 30px
+        ),
+        repeating-linear-gradient(
+          60deg,
+          transparent,
+          transparent 28px,
+          rgba(0,0,0,0.05) 28px,
+          rgba(0,0,0,0.05) 30px
+        );
+    }
+
+    .btn-wpp {
+      background: #FFCC00;
+      color: #1e1e1e;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-wpp:hover { background: #e6b800; transform: translateY(-1px); }
+
+    .btn-dark {
+      background: #1e1e1e;
+      color: #FFCC00;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-dark:hover { background: #111; transform: translateY(-1px); }
+
+    .card-servico {
+      border: 1px solid rgba(255,204,0,0.25);
+      background: rgba(255,255,255,0.04);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .card-servico:hover {
+      border-color: #FFCC00;
+      background: rgba(255,204,0,0.06);
+    }
+
+    .faq-answer { display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-icon { transition: transform 0.2s; }
+
+    #navbar.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+  </style>
+</head>
+<body class="bg-dark text-white">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-darker transition-shadow duration-300">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <a href="#hero">
+        <img src="logo.png" alt="Solutos Porta Paletes" class="h-7 w-auto" />
+      </a>
+      <a href="https://wa.me/5527992228275?text=Ol%C3%A1!%20Quero%20solicitar%20or%C3%A7amento%20e%20layout%20gratuito%20de%20porta%20paletes." target="_blank" class="btn-wpp px-4 py-2 rounded-sm text-sm hidden sm:inline-flex">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Orçamento + Layout Gratuito
+      </a>
+      <a href="https://wa.me/5527992228275?text=Ol%C3%A1!%20Quero%20solicitar%20or%C3%A7amento%20e%20layout%20gratuito%20de%20porta%20paletes." target="_blank" class="btn-wpp px-3 py-2 rounded-sm text-xs sm:hidden">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="min-h-screen flex items-center pt-16" style="background-color:#606060;background-image:linear-gradient(to right,#606060 0%,#606060 35%,rgba(96,96,96,0.82) 55%,rgba(96,96,96,0.18) 100%),repeating-linear-gradient(120deg,transparent,transparent 28px,rgba(255,204,0,0.07) 28px,rgba(255,204,0,0.07) 30px),repeating-linear-gradient(60deg,transparent,transparent 28px,rgba(255,204,0,0.07) 28px,rgba(255,204,0,0.07) 30px),url('hero.png');background-size:cover;background-position:center right;background-repeat:no-repeat;">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full">
+      <div class="max-w-2xl">
+        <p class="text-amarelo heading font-bold text-base uppercase tracking-widest mb-3">Porta Paletes Novos &amp; Usados Revisados</p>
+        <h1 class="heading font-black text-white leading-none mb-4" style="font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:0.93;">
+          PARE DE PERDER ESPAÇO<br/><span class="text-amarelo">TRIPLIQUE SUA CAPACIDADE</span><br/>SEM MUDAR DE GALPÃO
+        </h1>
+        <p class="text-white text-sm md:text-base leading-relaxed mb-5 max-w-xl opacity-90">
+          Porta Paletes Novos e Usados Revisados com até 40% de economia, disponíveis para envio imediato em todo o Brasil.
+        </p>
+        <ul class="space-y-1.5 mb-6">
+          <li class="flex items-center gap-2 text-white text-sm">
+            <span class="w-5 h-5 bg-amarelo rounded-sm flex items-center justify-center flex-shrink-0">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            +10.000 posições disponíveis para pronta entrega
+          </li>
+          <li class="flex items-center gap-2 text-white text-sm">
+            <span class="w-5 h-5 bg-amarelo rounded-sm flex items-center justify-center flex-shrink-0">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Usados revisados com teste de carga e pintura nova
+          </li>
+          <li class="flex items-center gap-2 text-white text-sm">
+            <span class="w-5 h-5 bg-amarelo rounded-sm flex items-center justify-center flex-shrink-0">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Layout do seu estoque incluso antes da compra
+          </li>
+          <li class="flex items-center gap-2 text-white text-sm">
+            <span class="w-5 h-5 bg-amarelo rounded-sm flex items-center justify-center flex-shrink-0">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            Entrega otimizada para Sudeste e Centro-Oeste
+          </li>
+        </ul>
+        <a href="https://wa.me/5527992228275?text=Ol%C3%A1!%20Quero%20solicitar%20or%C3%A7amento%20e%20layout%20gratuito%20de%20porta%20paletes." target="_blank" class="btn-wpp px-7 py-3 rounded-sm text-base inline-flex mb-2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Solicitar Orçamento + Layout Gratuito no WhatsApp
+        </a>
+        <p class="text-cinzaclaro text-xs">atendimento rápido e direto com especialista</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST BAR ===== -->
+  <section class="bg-amarelo py-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="flex items-center gap-2 justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          <span class="heading font-bold text-dark text-sm uppercase tracking-wide">+10.000 posições</span>
+        </div>
+        <div class="flex items-center gap-2 justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          <span class="heading font-bold text-dark text-sm uppercase tracking-wide">Até 40% economia</span>
+        </div>
+        <div class="flex items-center gap-2 justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          <span class="heading font-bold text-dark text-sm uppercase tracking-wide">Layout gratuito</span>
+        </div>
+        <div class="flex items-center gap-2 justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span class="heading font-bold text-dark text-sm uppercase tracking-wide">Todo o Brasil</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROBLEMA ===== -->
+  <section class="bg-white py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-14">
+        <p class="text-cinza heading font-bold text-base uppercase tracking-widest mb-2">Você reconhece isso?</p>
+        <h2 class="heading font-black text-dark leading-none" style="font-size:clamp(2rem,5vw,3.5rem);">
+          SEU ESTOQUE JÁ <span style="color:#666666;">CHEGOU NO LIMITE.</span>
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="border-l-4 border-amarelo bg-gray-50 p-6 rounded-sm">
+          <div class="text-amarelo mb-3">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3 class="heading font-black text-dark text-xl mb-2">Produto no chão</h3>
+          <p class="text-cinza text-sm leading-relaxed">Espaço mal aproveitado, corredores bloqueados, picking lento. Cada dia sem estrutura adequada é dinheiro jogado fora em ineficiência operacional.</p>
+        </div>
+        <div class="border-l-4 border-amarelo bg-gray-50 p-6 rounded-sm">
+          <div class="text-amarelo mb-3">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h3 class="heading font-black text-dark text-xl mb-2">Galpão maior parece a única saída</h3>
+          <p class="text-cinza text-sm leading-relaxed">E a única solução que parece viável é gastar uma fortuna com um espaço maior — quando o problema real é outro.</p>
+        </div>
+        <div class="border-l-4 border-amarelo bg-gray-50 p-6 rounded-sm">
+          <div class="text-amarelo mb-3">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="heading font-black text-dark text-xl mb-2">Na maioria dos casos: falta de estrutura</h3>
+          <p class="text-cinza text-sm leading-relaxed">O problema não é falta de espaço. Com a estrutura certa, você resolve usando o espaço que já tem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOLUÇÃO ===== -->
+  <section class="bg-darker py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-14">
+        <p class="text-amarelo heading font-bold text-base uppercase tracking-widest mb-2">Com o porta paletes certo</p>
+        <h2 class="heading font-black text-white leading-none" style="font-size:clamp(2rem,5vw,3.5rem);">
+          VOCÊ PODE:
+        </h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4 max-w-3xl mx-auto mb-12">
+        <div class="flex items-start gap-4 p-5 border border-gray-700 rounded-sm hover:border-amarelo transition-colors">
+          <div class="w-10 h-10 bg-amarelo rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h3 class="heading font-black text-white text-xl leading-tight">Multiplicar a capacidade</h3>
+            <p class="text-cinzaclaro text-sm">de armazenamento</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-5 border border-gray-700 rounded-sm hover:border-amarelo transition-colors">
+          <div class="w-10 h-10 bg-amarelo rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h3 class="heading font-black text-white text-xl leading-tight">Organizar o estoque</h3>
+            <p class="text-cinzaclaro text-sm">de forma lógica e produtiva</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-5 border border-gray-700 rounded-sm hover:border-amarelo transition-colors">
+          <div class="w-10 h-10 bg-amarelo rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h3 class="heading font-black text-white text-xl leading-tight">Reduzir perdas e retrabalho</h3>
+            <p class="text-cinzaclaro text-sm">menos erro, mais velocidade</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 p-5 border border-gray-700 rounded-sm hover:border-amarelo transition-colors">
+          <div class="w-10 h-10 bg-amarelo rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h3 class="heading font-black text-white text-xl leading-tight">Evitar (ou adiar) o custo</h3>
+            <p class="text-cinzaclaro text-sm">de mudar de galpão</p>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-white text-lg">Tudo isso usando o <span class="text-amarelo font-bold">espaço que você já tem.</span></p>
+    </div>
+  </section>
+
+  <!-- ===== DIFERENCIAL ===== -->
+  <section class="bg-dark py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-2 gap-12 md:items-stretch">
+        <div>
+          <p class="text-amarelo heading font-bold text-base uppercase tracking-widest mb-3">Diferencial</p>
+          <h2 class="heading font-black text-white leading-none mb-8" style="font-size:clamp(2rem,4.5vw,3.2rem);">
+            ESTRUTURA PRONTA,<br/>ESTOQUE REAL E<br/><span class="text-amarelo">LOGÍSTICA NACIONAL.</span>
+          </h2>
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-12 h-12 rounded-sm bg-amarelo flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="heading font-black text-dark text-xl">1</span>
+              </div>
+              <div>
+                <h3 class="heading font-black text-white text-lg mb-1">Usados Revisados — não é sucata</h3>
+                <p class="text-cinzaclaro text-sm leading-relaxed">Todos passam por teste estrutural de carga, conferência de alinhamento e pintura eletrostática nova. Visual e segurança de novo, com até 40% de economia.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-12 h-12 rounded-sm bg-amarelo flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="heading font-black text-dark text-xl">2</span>
+              </div>
+              <div>
+                <h3 class="heading font-black text-white text-lg mb-1">Estoque real, sem espera</h3>
+                <p class="text-cinzaclaro text-sm leading-relaxed">Mais de 10.000 posições disponíveis em Santa Catarina. Nada de esperar fabricação — você compra sabendo que o material já existe.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-12 h-12 rounded-sm bg-amarelo flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="heading font-black text-dark text-xl">3</span>
+              </div>
+              <div>
+                <h3 class="heading font-black text-white text-lg mb-1">Logística que funciona</h3>
+                <p class="text-cinzaclaro text-sm leading-relaxed">Entrega nacional com operação otimizada. Especialmente competitivo para Sudeste e Centro-Oeste — mesmo comparado a fornecedores locais sem estoque.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="relative md:flex md:flex-col">
+          <div class="rounded-sm overflow-hidden h-64 md:flex-1">
+            <img src="pqsolutos.jpg" alt="Estoque Solutos Porta Paletes" class="w-full h-full object-cover block" />
+          </div>
+          <div class="absolute -bottom-4 -left-4 bg-amarelo text-dark rounded-sm px-4 py-3 shadow-xl">
+            <div class="heading font-black text-2xl leading-none">40%</div>
+            <div class="text-xs font-bold uppercase tracking-wide">de economia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OBJEÇÕES ===== -->
+  <section class="bg-darker py-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-12">
+        <p class="text-amarelo heading font-bold text-base uppercase tracking-widest mb-2">Dúvidas frequentes</p>
+        <h2 class="heading font-black text-white leading-none" style="font-size:clamp(1.8rem,4vw,3rem);">
+          ANTES DE TOMAR UMA<br/>DECISÃO, LEIA ISSO
+        </h2>
+      </div>
+      <div class="space-y-2" id="objecoes">
+        <div class="faq-item border border-gray-700 rounded-sm overflow-hidden">
+          <button type="button" class="faq-btn w-full flex items-center justify-between p-5 text-left hover:bg-dark transition-colors" onclick="toggleFaq(this)">
+            <span class="heading font-bold text-white text-base pr-4">"Usado é seguro?"</span>
+            <svg class="faq-icon w-5 h-5 text-amarelo flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p class="text-cinzaclaro text-sm leading-relaxed">Sim. Todos passam por inspeção técnica e teste de resistência antes da venda.</p>
+          </div>
+        </div>
+        <div class="faq-item border border-gray-700 rounded-sm overflow-hidden">
+          <button type="button" class="faq-btn w-full flex items-center justify-between p-5 text-left hover:bg-dark transition-colors" onclick="toggleFaq(this)">
+            <span class="heading font-bold text-white text-base pr-4">"Vai sair caro?"</span>
+            <svg class="faq-icon w-5 h-5 text-amarelo flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p class="text-cinzaclaro text-sm leading-relaxed">Verticalizar seu estoque pode custar até 80% menos do que mudar de galpão.</p>
+          </div>
+        </div>
+        <div class="faq-item border border-gray-700 rounded-sm overflow-hidden">
+          <button type="button" class="faq-btn w-full flex items-center justify-between p-5 text-left hover:bg-dark transition-colors" onclick="toggleFaq(this)">
+            <span class="heading font-bold text-white text-base pr-4">"E o frete?"</span>
+            <svg class="faq-icon w-5 h-5 text-amarelo flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p class="text-cinzaclaro text-sm leading-relaxed">Nossa logística é estruturada pra manter o custo competitivo mesmo fora de SC.</p>
+          </div>
+        </div>
+        <div class="faq-item border border-gray-700 rounded-sm overflow-hidden">
+          <button type="button" class="faq-btn w-full flex items-center justify-between p-5 text-left hover:bg-dark transition-colors" onclick="toggleFaq(this)">
+            <span class="heading font-bold text-white text-base pr-4">"Não sei o que cabe no meu espaço"</span>
+            <svg class="faq-icon w-5 h-5 text-amarelo flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer px-5 pb-5">
+            <p class="text-cinzaclaro text-sm leading-relaxed">Você não precisa saber. Nossa equipe desenha o layout ideal do seu estoque antes de você fechar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OFERTA ===== -->
+  <section class="chevron-bg-yellow py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-dark heading font-bold text-base uppercase tracking-widest mb-3 opacity-60">A oferta</p>
+      <h2 class="heading font-black text-dark leading-none mb-12" style="font-size:clamp(2rem,5vw,3.5rem);">
+        AO SOLICITAR SEU ORÇAMENTO,<br/>VOCÊ RECEBE:
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-10">
+        <div class="bg-darker text-white rounded-sm p-5 flex items-start gap-4 text-left">
+          <div class="w-10 h-10 bg-amarelo rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="heading font-black text-white text-xl leading-tight">Estimativa personalizada</div>
+          </div>
+        </div>
+        <div class="bg-darker text-white rounded-sm p-5 flex items-start gap-4 text-left">
+          <div class="w-10 h-10 bg-amarelo rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="heading font-black text-white text-xl leading-tight">Estrutura ideal recomendada</div>
+          </div>
+        </div>
+        <div class="bg-darker text-white rounded-sm p-5 flex items-start gap-4 text-left">
+          <div class="w-10 h-10 bg-amarelo rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="heading font-black text-white text-xl leading-tight">Layout do seu espaço</div>
+          </div>
+        </div>
+        <div class="bg-darker text-white rounded-sm p-5 flex items-start gap-4 text-left">
+          <div class="w-10 h-10 bg-amarelo rounded-sm flex items-center justify-center flex-shrink-0 mt-0.5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1e1e1e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="heading font-black text-white text-xl leading-tight">Orientação técnica completa</div>
+          </div>
+        </div>
+      </div>
+      <p class="text-dark font-bold text-lg mb-8 opacity-80">Sem compromisso.</p>
+      <a href="https://wa.me/5527992228275?text=Ol%C3%A1!%20Quero%20solicitar%20or%C3%A7amento%20e%20layout%20gratuito%20de%20porta%20paletes." target="_blank" class="btn-dark px-8 py-4 rounded-sm text-lg inline-flex">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar com especialista agora no WhatsApp
+      </a>
+      <p class="text-dark text-sm mt-4 opacity-70">Receba seu orçamento + sugestão de layout</p>
+    </div>
+  </section>
+
+  <!-- ===== PROVA ===== -->
+  <section class="bg-white py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <p class="text-cinza heading font-bold text-base uppercase tracking-widest mb-2">Prova</p>
+        <h2 class="heading font-black text-dark leading-none" style="font-size:clamp(1.8rem,4vw,2.8rem);">
+          FOTOS REAIS DO ESTOQUE,<br/>PROJETOS MONTADOS E CLIENTES ATENDIDOS
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-12">
+        <div class="rounded-sm overflow-hidden" style="min-height:320px;">
+          <img src="pqsolutos.jpg" alt="Estoque Solutos Porta Paletes" class="w-full h-full object-cover" style="min-height:320px;" />
+        </div>
+        <div class="rounded-sm overflow-hidden" style="min-height:320px;background:#3a3a3a;">
+          <img src="hero.png" alt="Operação porta paletes" class="w-full h-full object-cover" style="min-height:320px;" />
+        </div>
+      </div>
+      <p class="text-center text-cinza text-sm mb-10">Aqui entram: projetos montados (antes/depois) e prints de clientes com contexto</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-200 rounded-sm overflow-hidden">
+        <div class="text-center py-10 px-4 bg-darker">
+          <div class="heading font-black text-amarelo" style="font-size:clamp(2.4rem,5vw,4rem);line-height:1;">+10.000</div>
+          <div class="text-cinzaclaro text-sm uppercase tracking-widest mt-1">posições em estoque</div>
+        </div>
+        <div class="text-center py-10 px-4 bg-darker">
+          <div class="heading font-black text-white" style="font-size:clamp(2.4rem,5vw,4rem);line-height:1;">7</div>
+          <div class="text-cinzaclaro text-sm uppercase tracking-widest mt-1">estados atendidos</div>
+        </div>
+        <div class="text-center py-10 px-4 bg-darker">
+          <div class="heading font-black text-white" style="font-size:clamp(2.4rem,5vw,4rem);line-height:1;">Anos</div>
+          <div class="text-cinzaclaro text-sm uppercase tracking-widest mt-1">de mercado</div>
+        </div>
+        <div class="text-center py-10 px-4 bg-darker">
+          <div class="heading font-black text-white" style="font-size:clamp(2.4rem,5vw,4rem);line-height:1;">100s</div>
+          <div class="text-cinzaclaro text-sm uppercase tracking-widest mt-1">projetos entregues</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FECHAMENTO ===== -->
+  <section class="chevron-bg py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <p class="text-amarelo heading font-bold text-base uppercase tracking-widest mb-4">Não deixe para amanhã</p>
+      <h2 class="heading font-black text-white leading-none mb-6" style="font-size:clamp(2.2rem,6vw,4.5rem);">
+        SE SEU ESTOQUE JÁ ESTÁ<br/>NO LIMITE, <span class="text-amarelo">ADIAR ESSA<br/>DECISÃO</span> SÓ AUMENTA<br/>O CUSTO.
+      </h2>
+      <p class="text-cinzaclaro text-lg mb-2">Ou você continua perdendo espaço…</p>
+      <p class="text-white text-lg font-medium mb-10">Ou resolve isso agora com uma estrutura pronta para uso.</p>
+      <a href="https://wa.me/5527992228275?text=Ol%C3%A1!%20Quero%20solicitar%20or%C3%A7amento%20e%20layout%20gratuito%20de%20porta%20paletes." target="_blank" class="btn-wpp px-10 py-5 rounded-sm text-xl inline-flex">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Solicitar Orçamento no WhatsApp
+      </a>
+      <p class="text-cinza text-sm mt-4">Sem custo · Sem compromisso · Resposta imediata</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-darker border-t border-gray-800 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <img src="logo.png" alt="Solutos Porta Paletes" class="h-8 w-auto" />
+      </div>
+      <p class="text-cinza text-xs text-center">Soluções completas em armazenagem industrial · Atendimento nacional</p>
+      <a href="https://wa.me/5527992228275" target="_blank" class="text-amarelo text-sm font-semibold hover:text-white transition-colors flex items-center gap-2">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </footer>
+
+  <!-- ===== JS ===== -->
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('#objecoes .faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</body>
+</html>
